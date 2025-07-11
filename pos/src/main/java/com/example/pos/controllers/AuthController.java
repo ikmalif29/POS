@@ -3,16 +3,18 @@ package com.example.pos.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.pos.dto.GenericResponse;
 import com.example.pos.dto.RequestLoginDto;
-import com.example.pos.dto.RequestRegistDto;
-import com.example.pos.services.UserService;
+import com.example.pos.services.email.EmailServiceImpl;
+import com.example.pos.services.user.UserService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -20,26 +22,29 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private EmailServiceImpl emailService;
+
     @PostMapping("/login")
     public ResponseEntity<Object> postMethodName(@RequestBody RequestLoginDto requestLoginDto) {
-        try{
+        try {
             return ResponseEntity.ok().body(GenericResponse.success(userService.login(requestLoginDto)));
-        }catch(ResponseStatusException e){
+        } catch (ResponseStatusException e) {
             return ResponseEntity.status(e.getStatusCode()).body(GenericResponse.error(e.getMessage()));
-        }catch(Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(500).body(GenericResponse.error(e.getMessage()));
         }
     }
-    
-    @PostMapping("/register")
-    public ResponseEntity<Object> postMethodName(@RequestBody RequestRegistDto requestRegistDto) {
-        try{
-            return ResponseEntity.ok().body(GenericResponse.success(userService.register(requestRegistDto)));
-        }catch(ResponseStatusException e){
-            return ResponseEntity.ok().body(GenericResponse.error(e.getMessage()));
-        }catch(Exception e){
+
+    @GetMapping("/verified")
+    public ResponseEntity<Object> postMethodName(@RequestParam String email) {
+        try {
+            emailService.sendEmailVerification(email);
+            return ResponseEntity.ok().body(GenericResponse.success(null));
+        } catch (ResponseStatusException e) {
+            return ResponseEntity.status(e.getStatusCode()).body(GenericResponse.error(e.getMessage()));
+        } catch (Exception e) {
             return ResponseEntity.status(500).body(GenericResponse.error(e.getMessage()));
         }
     }
-    
 }

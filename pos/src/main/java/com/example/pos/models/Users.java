@@ -1,6 +1,7 @@
 package com.example.pos.models;
 
-import com.example.pos.enums.RoleUsers;
+import com.example.pos.enums.RoleUsersEnums;
+import com.example.pos.enums.StatusEnums;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,7 +27,11 @@ public class Users {
     private String nama;
     private String email;
     private String password;
+    private boolean isVerified;
+    
+    @Enumerated(EnumType.STRING)
+    private StatusEnums status;
 
     @Enumerated(EnumType.STRING)
-    private RoleUsers role;
+    private RoleUsersEnums role;
 }

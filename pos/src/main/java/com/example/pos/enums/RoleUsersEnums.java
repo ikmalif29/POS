@@ -1,6 +1,6 @@
 package com.example.pos.enums;
 
-public enum RoleUsers {
+public enum RoleUsersEnums {
     ADMIN,
     KASIR
 }

@@ -6,7 +6,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.example.pos.enums.RoleUsers;
+import com.example.pos.enums.RoleUsersEnums;
+import com.example.pos.enums.StatusEnums;
 import com.example.pos.models.Users;
 import com.example.pos.repository.UserRepository;
 
@@ -25,7 +26,9 @@ public class InitialDataLoader implements ApplicationRunner {
             .nama("Admin")
             .email("adminpos@gmail.com")
             .password(passwordEncoder.encode("mimin123"))
-            .role(RoleUsers.ADMIN)
+            .role(RoleUsersEnums.ADMIN)
+            .isVerified(true)
+            .status(StatusEnums.ACTIVE)
             .build();
             userRepository.save(user);
         }

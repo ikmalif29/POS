@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Verification</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background-color: #4CAF50;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .content {
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .content h2 {
+      font-size: 22px;
+      color: #333;
+    }
+    .content p {
+      font-size: 16px;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .footer {
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>POS - Email Verification</h1>
+    </div>
+
+    <div class="content">
+      <h2>Hello, {{nama}}</h2>
+      <p>Thank you for registering with our POS system.<br>
+      Please click the button below to verify your email address and activate your account.</p>
+
+      <a href="{{verificationUrl}}" class="btn">Verify Email</a>
+
+      <p style="margin-top:30px; font-size: 14px; color: #777;">If you did not create an account, no further action is required.</p>
+    </div>
+
+    <div class="footer">
+      &copy; 2025 POS System. All rights reserved.
+    </div>
+  </div>
+
+</body>
+</html>
