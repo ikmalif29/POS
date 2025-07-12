@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verifikasi Kode OTP</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        p {
+            color: #555555;
+            font-size: 16px;
+        }
+
+        .otp-box {
+            margin-top: 20px;
+            font-size: 32px;
+            letter-spacing: 10px;
+            font-weight: bold;
+            color: #2c3e50;
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #999999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Verifikasi Kode OTP</h1>
+        <p>Halo <strong>{{email}}</strong>,</p>
+        <p>Gunakan kode OTP berikut untuk memverifikasi akun Anda:</p>
+        <div class="otp-box">{{kodeOtp}}</div>
+        <p>Kode ini berlaku selama beberapa menit. Jangan bagikan kode ini kepada siapa pun.</p>
+        <div class="footer">
+            &copy; 2025 Sistem Verifikasi. Semua hak dilindungi.
+        </div>
+    </div>
+</body>
+
+</html>

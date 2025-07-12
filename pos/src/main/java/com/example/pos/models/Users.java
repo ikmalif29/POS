@@ -1,5 +1,7 @@
 package com.example.pos.models;
 
+import java.time.LocalDateTime;
+
 import com.example.pos.enums.RoleUsersEnums;
 import com.example.pos.enums.StatusEnums;
 
@@ -28,6 +30,8 @@ public class Users {
     private String email;
     private String password;
     private boolean isVerified;
+    private String kodeOtp;
+    private LocalDateTime expiresKodeOtp;
     
     @Enumerated(EnumType.STRING)
     private StatusEnums status;
