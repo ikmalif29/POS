@@ -32,6 +32,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Object> postMethodName(@RequestBody RequestLoginDto requestLoginDto) {
+        System.out.println("asaksk");
         try {
             return ResponseEntity.ok().body(GenericResponse.success(userService.login(requestLoginDto)));
         } catch (ResponseStatusException e) {

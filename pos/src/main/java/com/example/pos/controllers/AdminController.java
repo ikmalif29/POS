@@ -11,7 +11,11 @@ import com.example.pos.services.kasir.KasirService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody; 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -31,4 +35,22 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/get-all-kasir")
+    public ResponseEntity<Object> getMethodName() {
+        try{
+            return ResponseEntity.ok().body(GenericResponse.success(kasirService.getAllKasir()));
+        }catch(Exception e){
+            return ResponseEntity.status(500).body(GenericResponse.error(e.getMessage()));
+        }
+    }
+
+
+    @PutMapping("/delete-kasir/{id}")
+    public ResponseEntity<Object> putMethodName(@PathVariable Integer id) {
+        try{
+            return ResponseEntity.ok().body(GenericResponse.success(kasirService.deleteSoftKasir(id)));
+        }catch(Exception e){
+            return ResponseEntity.status(500).body(GenericResponse.error(e.getMessage()));
+        }
+    }
 }

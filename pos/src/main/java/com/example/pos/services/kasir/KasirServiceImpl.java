@@ -1,5 +1,7 @@
 package com.example.pos.services.kasir;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -41,5 +43,30 @@ public class KasirServiceImpl implements KasirService {
 
         emailService.sendVerifiedKasir(user.getEmail());
         return "waiting for verification from the cashier";
+    }
+
+    @Override
+    public List<Users> getAllKasir() {
+        List<Users> kasir = userRepository.findByRole(RoleUsersEnums.KASIR);
+
+        if(kasir.isEmpty()){
+            throw new RuntimeException("Kasir not found");
+        }
+
+        return kasir;
+    }
+
+    @Override
+    public String deleteSoftKasir(Integer id) {
+        Users kasir = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Kasir not found"));
+
+        if(kasir.getRole() != RoleUsersEnums.KASIR){
+            throw new RuntimeException("Kasir not found");
+        }
+
+        kasir.setStatus(StatusEnums.INACTIVE);
+        kasir.setVerified(false);
+        userRepository.save(kasir);
+        return "Kasir deleted";
     }
 }

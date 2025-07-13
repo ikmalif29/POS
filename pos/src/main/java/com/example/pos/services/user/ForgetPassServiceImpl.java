@@ -38,7 +38,7 @@ public class ForgetPassServiceImpl implements ForgetPassService {
         }
 
         String kodeOtp = UUID.randomUUID().toString().substring(0, 8);
-        LocalDateTime expiresKode = LocalDateTime.now().plusMinutes(1);
+        LocalDateTime expiresKode = LocalDateTime.now().plusMinutes(5);
         user.setExpiresKodeOtp(expiresKode);
         user.setKodeOtp(kodeOtp);
         userRepository.save(user);
